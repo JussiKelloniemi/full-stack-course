@@ -1,10 +1,14 @@
 import express from 'express'
+import colors from 'colors'
 import router from './routes/goalRoutes.js'
 import errorHandler from './middleware/errorMiddleware.js'
+import connectDB from './config/db.js'
 import { fileURLToPath } from 'url'
 import path from 'path'
 
 const port = process.env.PORT || 5000
+
+connectDB()
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
