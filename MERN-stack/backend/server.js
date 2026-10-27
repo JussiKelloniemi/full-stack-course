@@ -1,6 +1,7 @@
 import express from 'express'
 import colors from 'colors'
 import router from './routes/goalRoutes.js'
+import user from './routes/userRoutes.js'
 import errorHandler from './middleware/errorMiddleware.js'
 import connectDB from './config/db.js'
 import { fileURLToPath } from 'url'
@@ -21,6 +22,7 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/goals', router)
+app.use('/api/users', user)
 
 app.use(errorHandler)
 
