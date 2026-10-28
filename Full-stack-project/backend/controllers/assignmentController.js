@@ -2,7 +2,7 @@ import asyncHandler from 'express-async-handler'
 import assignmentModel from '../models/assignmentModel.js'
 
 // @desc    Get assignment
-// @route   GET /api/goals
+// @route   GET /api/assignments
 // @access  Private
 const getAssignment = asyncHandler(async (req, res) => {
     const goals = await goalModel.find({ user: req.user.id })
@@ -10,17 +10,27 @@ const getAssignment = asyncHandler(async (req, res) => {
     res.status(200).json({goals})
 })
 
-// @desc    Get assignment
-// @route   GET /api/goals
+// @desc    Set assignment
+// @route   POST /api/assingments
 // @access  Private
 const setAssignment = asyncHandler(async (req, res) => {
-    const goals = await goalModel.find({ user: req.user.id })
+    if(!req.body.assignment || !req.body.dueDate) {
+        res.status(400)
+        throw new Error('Please add a text field')
+    }
 
-    res.status(200).json({goals})
+    const assignment = await assignmentModel.create({
+        user: req.user.id,
+        assignment: req.body.assignment,
+        dueDate: req.body.dueDate,
+        completed: false
+    })
+
+    res.status(200).json(assignment)
 })
 
-// @desc    Get assignment
-// @route   GET /api/goals
+// @desc    Update assignment
+// @route   PUT /api/assingments/:id
 // @access  Private
 
 const updateAssignment = asyncHandler(async (req, res) => {
@@ -29,8 +39,8 @@ const updateAssignment = asyncHandler(async (req, res) => {
     res.status(200).json({goals})
 })
 
-// @desc    Get assignment
-// @route   GET /api/goals
+// @desc    Delete assignment
+// @route   Delete /api/assignments/:id
 // @access  Private
 const deleteAssignment = asyncHandler(async (req, res) => {
     const assignment = await assignmentModel.findById(req.params.id)

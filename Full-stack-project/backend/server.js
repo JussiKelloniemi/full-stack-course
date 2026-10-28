@@ -1,6 +1,6 @@
 import express from 'express'
 import colors from 'colors'
-import course from './routes/courseRoutes.js'
+// import course from './routes/courseRoutes.js'
 import assignment from './routes/assignmentRoutes.js'
 import user from './routes/userRoutes.js'
 import errorHandler from './middleware/errorMiddleware.js'
@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api/assignments', assignment)
-app.use('/api/courses', course)
+// app.use('/api/courses', course)
 app.use('/api/users', user)
 
 if (process.env.NODE_ENV === 'production') {
