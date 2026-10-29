@@ -6,6 +6,11 @@ const assignmentSchema = mongoose.Schema({
         required: true,
         ref: 'userModel'
     },
+    course: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'courseModel'
+    },
     assignment: {
         type: String,
         required: [true, 'Please add a text value']

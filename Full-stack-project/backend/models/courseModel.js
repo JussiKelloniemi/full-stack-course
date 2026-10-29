@@ -11,7 +11,7 @@ const courseSchema = mongoose.Schema({
         required : true
     },
     completed: {
-        type: Date,
+        type: Boolean,
         required: false
     }
 },{
