@@ -86,20 +86,59 @@ h3 {
   color: #828282;
 }
 
-.goals {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
 
-.goal {
-  background-color: #f4f4f4;
-  margin: 10px 0;
-  padding: 20px 0 10px;
+.courses {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
   position: relative;
+  border-radius: 30px;
+  gap: 5px
 }
 
-.goal .close {
+.course {
+  background-color: #969393;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  align-items: start;
+  margin: 50px;
+  padding: 20px 20px;
+  border-radius: 15px;
+}
+
+.course-items {
+  position: relative;
+  padding-top: 35px;
+  flex: 1;
+}
+
+.course-items .form {
+  width: 100%;
+  margin: 20px 0 0;
+}
+
+.course-items .form-group {
+  width: 80%;
+  margin: 20px 0 0;
+}
+
+.course-assignments {
+  min-width: 0;
+  width: 100%;
+  flex: 2;
+}
+
+.course-assignments, .assignment {
+  width: 100%;
+}
+
+.assignment-form {
+  width: 80%;
+  margin: 20px auto 0;
+}
+
+.course .close {
   position: absolute;
   top: 10px;
   right: 15px;
@@ -108,11 +147,34 @@ h3 {
   background: none;
 }
 
-.form,
-.content {
-  width: 70%;
-  margin: 0 auto;
+.assignments {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
 }
+
+.assignment {
+  background-color: #bb9838;
+  margin: 10px 0;
+  padding: 10px 0 10px;
+  position: relative;
+  user-select: none;
+  border-radius: 10px;
+}
+
+.assignment .close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.assignment.completed {
+  background-color: green;
+}
+
 
 .form-group {
   margin-bottom: 10px;
@@ -123,7 +185,7 @@ h3 {
 .form-group select {
   width: 100%;
   padding: 10px;
-  border: 1px solid #e6e6e6;
+  border: 1px solid #0a0a0a;
   border-radius: 5px;
   margin-bottom: 10px;
   font-family: inherit;
@@ -139,7 +201,7 @@ h3 {
   padding: 10px 20px;
   border: 1px solid #000;
   border-radius: 5px;
-  background: #000;
+  background: #426bdd;
   color: #fff;
   font-size: 16px;
   font-weight: 700;

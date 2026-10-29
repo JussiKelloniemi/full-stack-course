@@ -16,7 +16,7 @@ function CourseForm() {
 
   return (
     <section className='form'>
-        <form onSubmit={onSubmit}>
+        <form className='assignment-form' onSubmit={onSubmit}>
             <div className="form-group">
                 <label htmlFor="text">Enter your course name</label>
                 <input type="text" name='text' id='text' value={text} onChange={(e) => setText(e.target.value)} />

@@ -22,7 +22,8 @@ export const createAssignment = createAsyncThunk('assignments/create', async (as
 export const getAssignments = createAsyncThunk('assignments/getAll', async (courseId, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
-        return await assignmentService.getAssignments(courseId, token)
+        const assignments = await assignmentService.getAssignments(courseId, token)
+        return {courseId, assignments}
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)
@@ -76,7 +77,8 @@ export const assignmentSlice = createSlice({
             .addCase(getAssignments.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
-                state.assignments = action.payload
+                const {courseId, assignments} = action.payload
+                state.assignments = [...state.assignments.filter((assignment) => assignment.course !== courseId), ...assignments]
             })
             .addCase(getAssignments.rejected, (state, action) => {
                 state.isLoading = false
