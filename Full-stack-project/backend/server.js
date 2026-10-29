@@ -26,13 +26,13 @@ app.use('/api/assignments', assignment)
 app.use('/api/courses', course)
 app.use('/api/users', user)
 
-/* if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../frontend/build')))
 
     app.get('/{*splat}', (req, res) => res.sendFile(path.resolve(__dirname, '../frontend/build/index.html')))
 } else {
     app.get('/', (req ,res) => res.send('Please set to production'))
-} */
+}
 
 app.use(errorHandler)
 
